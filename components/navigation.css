@@ -1,0 +1,121 @@
+.links .mobile-visit-link,
+.sub-links .mobile-visit-link {
+  display: none;
+}
+
+.sub-links a[aria-current="page"] {
+  color: var(--terra);
+}
+
+.sub-links a[aria-current="page"]::after {
+  right: 0;
+}
+
+.nav a:focus-visible,
+.nav button:focus-visible,
+.sub-nav a:focus-visible,
+.sub-nav button:focus-visible,
+.studio-whatsapp:focus-visible,
+.experience-list a:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 6px;
+}
+
+.menu-toggle {
+  min-width: 54px;
+  min-height: 44px;
+  cursor: pointer;
+}
+
+.studio-whatsapp {
+  position: fixed;
+  right: max(20px, env(safe-area-inset-right));
+  bottom: max(20px, env(safe-area-inset-bottom));
+  z-index: 45;
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+  padding: 15px 19px;
+  border: 1px solid rgba(245, 240, 233, .2);
+  border-radius: 16px;
+  color: var(--ivory);
+  background: var(--plum);
+  box-shadow: 0 12px 30px rgba(52, 47, 43, .2);
+  font-size: .8rem;
+  font-weight: 600;
+}
+
+.studio-whatsapp svg { flex: 0 0 auto; }
+.studio-whatsapp-arrow { margin-left: 5px; }
+
+.experience-list .experience-link {
+  width: 100%;
+  min-height: 88px;
+  display: grid;
+  grid-template-columns: 45px 1fr 1fr 30px;
+  align-items: center;
+  text-align: left;
+  border-bottom: 1px solid rgba(245, 240, 233, .22);
+  color: rgba(245, 240, 233, .65);
+  transition: color .25s, padding .25s;
+}
+
+.experience-list .experience-link span {
+  font: .66rem 'DM Mono', monospace;
+}
+
+.experience-list .experience-link strong {
+  font: 500 1.45rem 'Playfair Display', serif;
+}
+
+.experience-list .experience-link small {
+  font: .72rem 'DM Mono', monospace;
+}
+
+.experience-list .experience-link.active,
+.experience-list .experience-link:hover,
+.experience-list .experience-link:focus-visible {
+  color: var(--ivory);
+  padding-left: 14px;
+}
+
+.experience-list .experience-link.active strong { color: var(--sand); }
+.recovery-grid .ritual-card-link { font-size: .75rem; font-weight: 600; }
+.ritual-card-link::after { content: ''; position: absolute; inset: 0; }
+.ritual-card-link:focus-visible { outline: none; }
+.ritual-card-link:focus-visible::after { outline: 2px solid var(--ivory); outline-offset: -8px; }
+
+@media (max-width: 900px) {
+  .links .mobile-visit-link,
+  .sub-links .mobile-visit-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-top: 10px;
+    padding: 14px 24px;
+    border-radius: 9px;
+    color: var(--ivory);
+    background: var(--terra);
+  }
+
+  .links-open,
+  .sub-links-open {
+    max-height: calc(100svh - 115px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+
+  .links a,
+  .sub-links a { min-height: 44px; display: flex; align-items: center; }
+  .links, .sub-links { gap: 12px; }
+  .experience-list .experience-link { grid-template-columns: 36px 1fr 1fr 20px; gap: 6px; }
+  .experience-list .experience-link.active,
+  .experience-list .experience-link:hover { padding-left: 0; }
+  .studio-whatsapp { right: 16px; bottom: max(16px, env(safe-area-inset-bottom)); padding: 13px 15px; }
+  .sub-footer .footer-bottom { padding-bottom: 65px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .experience-list .experience-link { transition: none; }
+}
