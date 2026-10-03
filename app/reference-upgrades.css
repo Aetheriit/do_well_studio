@@ -1,0 +1,436 @@
+/* An image-led chapter for the three existing ways to Do Well. */
+.pillar-grid {
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr);
+  grid-template-rows: repeat(2, minmax(310px, 1fr));
+  gap: clamp(12px, 1.3vw, 20px);
+}
+
+.pillar-grid article,
+.pillar-grid article:nth-child(2),
+.pillar-grid article:nth-child(3) {
+  position: relative;
+  isolation: isolate;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+  padding: clamp(26px, 3vw, 44px);
+  border-radius: 16px;
+  background: var(--deep);
+  color: var(--ivory);
+  transform: none;
+  transition: none;
+}
+
+.pillar-grid article:first-child {
+  grid-row: span 2;
+}
+
+.pillar-grid article.reveal-target {
+  opacity: 0;
+  transform: translate3d(0, 24px, 0);
+  transition: opacity 760ms cubic-bezier(.16, 1, .3, 1) var(--reveal-delay, 0ms),
+    transform 760ms cubic-bezier(.16, 1, .3, 1) var(--reveal-delay, 0ms);
+}
+
+.pillar-grid article.reveal-target.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+.pillar-grid .pillar-photo {
+  z-index: 0;
+  object-fit: cover;
+  transition: transform 900ms cubic-bezier(.16, 1, .3, 1), filter 900ms ease;
+}
+
+.pillar-grid article:first-child .pillar-photo {
+  object-position: 50% 40%;
+}
+
+.pillar-grid article:nth-child(2) .pillar-photo {
+  object-position: 50% 46%;
+}
+
+.pillar-grid article:nth-child(3) .pillar-photo {
+  object-position: 50% 52%;
+}
+
+.pillar-grid article::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(25, 37, 32, .4), transparent 30%),
+    linear-gradient(0deg, rgba(25, 37, 32, .92), rgba(25, 37, 32, .5) 32%, rgba(25, 37, 32, .04) 75%);
+}
+
+.pillar-grid article > :not(.pillar-photo) {
+  position: relative;
+  z-index: 2;
+}
+
+.pillar-grid article > span {
+  align-self: flex-start;
+  padding-bottom: 9px;
+  border-bottom: 1px solid rgba(245, 240, 233, .7);
+}
+
+.pillar-grid h3 {
+  margin: auto 0 8px;
+  font-size: clamp(2.7rem, 4.4vw, 4.9rem);
+  line-height: 1;
+}
+
+.pillar-grid article:not(:first-child) h3 {
+  font-size: clamp(2.4rem, 3.2vw, 3.4rem);
+}
+
+.pillar-grid p {
+  max-width: 30ch;
+  margin: 0;
+  color: rgba(245, 240, 233, .91);
+}
+
+.pillar-grid a {
+  display: flex;
+  width: fit-content;
+  align-items: center;
+  gap: 22px;
+  padding-block: 9px;
+  border-bottom: 1px solid rgba(245, 240, 233, .76);
+  transition: gap 360ms cubic-bezier(.16, 1, .3, 1), border-color 360ms ease;
+}
+
+.pillar-grid a:hover,
+.pillar-grid a:focus-visible {
+  gap: 30px;
+  border-color: var(--ivory);
+}
+
+.pillar-grid a:focus-visible {
+  outline: 2px solid var(--ivory);
+  outline-offset: 5px;
+}
+
+.pillar-grid article:is(:hover, :focus-within) .pillar-photo {
+  transform: scale(1.045);
+}
+
+/* Give class discovery the image and motion layer used throughout the references. */
+.class-explorer {
+  grid-template-columns: minmax(0, .92fr) minmax(0, 1.08fr);
+  align-items: start;
+  gap: clamp(42px, 6vw, 92px);
+  padding-block: clamp(94px, 11vw, 150px);
+}
+
+.home-experience-stage {
+  min-width: 0;
+}
+
+.home-experience-stage .class-copy h2 {
+  text-wrap: balance;
+}
+
+.home-experience-preview {
+  position: relative;
+  display: block;
+  min-height: clamp(370px, 40vw, 520px);
+  margin-top: clamp(42px, 5vw, 68px);
+  overflow: hidden;
+  isolation: isolate;
+  border-radius: 170px 170px 12px 12px;
+  color: var(--ivory);
+  background: #35463d;
+}
+
+.home-experience-preview > img {
+  z-index: 0;
+  object-fit: cover;
+  object-position: center;
+  animation: home-photo-arrive 800ms cubic-bezier(.16, 1, .3, 1) both;
+  transition: transform 900ms cubic-bezier(.16, 1, .3, 1), filter 700ms ease;
+}
+
+.home-experience-preview::after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(23, 32, 28, .35), transparent 28%),
+    linear-gradient(0deg, rgba(23, 32, 28, .78), transparent 58%);
+}
+
+.home-preview-index {
+  position: absolute;
+  z-index: 2;
+  top: 26px;
+  left: 28px;
+  font: .67rem 'DM Mono', monospace;
+  letter-spacing: .1em;
+}
+
+.home-preview-copy {
+  position: absolute;
+  z-index: 2;
+  left: clamp(24px, 3vw, 42px);
+  right: 66px;
+  bottom: clamp(28px, 3.5vw, 44px);
+  display: grid;
+  gap: 6px;
+}
+
+.home-preview-copy strong {
+  font: 500 clamp(2.2rem, 4vw, 3.8rem)/.95 'Playfair Display', serif;
+  letter-spacing: -.04em;
+}
+
+.home-preview-copy small {
+  font: .68rem 'DM Mono', monospace;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: rgba(245, 240, 233, .8);
+}
+
+.home-preview-arrow {
+  position: absolute;
+  z-index: 2;
+  right: 28px;
+  bottom: 36px;
+  display: grid;
+  width: 38px;
+  height: 38px;
+  place-items: center;
+  border: 1px solid rgba(245, 240, 233, .5);
+  border-radius: 50%;
+  transition: transform 360ms cubic-bezier(.16, 1, .3, 1), background 360ms ease;
+}
+
+.home-experience-preview:hover > img,
+.home-experience-preview:focus-visible > img {
+  transform: scale(1.045);
+}
+
+.home-experience-preview:hover .home-preview-arrow,
+.home-experience-preview:focus-visible .home-preview-arrow {
+  transform: translate(2px, -2px);
+  background: rgba(245, 240, 233, .14);
+}
+
+.home-experience-preview:focus-visible {
+  outline-color: var(--ivory);
+  outline-offset: 5px;
+}
+
+.class-explorer .experience-list {
+  align-self: center;
+  border-top-color: rgba(245, 240, 233, .28);
+}
+
+.class-explorer .experience-list .experience-link {
+  min-height: clamp(72px, 7.2vw, 88px);
+  grid-template-columns: 40px minmax(0, 1fr) minmax(108px, .8fr) 22px;
+  gap: 10px;
+  position: relative;
+}
+
+.class-explorer .experience-list .experience-link::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 2px;
+  background: var(--sand);
+  transform: scaleY(0);
+  transform-origin: center;
+  transition: transform 360ms cubic-bezier(.16, 1, .3, 1);
+}
+
+.class-explorer .experience-list .experience-link.active::before,
+.class-explorer .experience-list .experience-link:hover::before,
+.class-explorer .experience-list .experience-link:focus-visible::before {
+  transform: scaleY(1);
+}
+
+.class-explorer .experience-list .experience-link > b {
+  transition: transform 320ms cubic-bezier(.16, 1, .3, 1);
+}
+
+.class-explorer .experience-list .experience-link:is(:hover, :focus-visible) > b {
+  transform: translate(3px, -3px);
+}
+
+@keyframes home-photo-arrive {
+  from { opacity: .5; transform: scale(1.045); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Let the studio story become one continuous, image-led place. */
+.story-section {
+  position: relative;
+  display: grid;
+  min-height: clamp(680px, 82svh, 900px);
+  grid-template-columns: minmax(0, 1fr);
+  align-items: end;
+  overflow: hidden;
+  isolation: isolate;
+  color: var(--ivory);
+  background: var(--deep);
+}
+
+.story-visual {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  min-height: 0;
+}
+
+.story-visual > img {
+  object-position: center 58%;
+  filter: saturate(.86);
+  transition: transform 1.2s cubic-bezier(.16, 1, .3, 1);
+}
+
+.story-section:hover .story-visual > img {
+  transform: scale(1.018);
+}
+
+.story-visual::after {
+  background: linear-gradient(90deg, rgba(21, 32, 27, .74), rgba(21, 32, 27, .2) 64%, transparent),
+    linear-gradient(0deg, rgba(21, 32, 27, .64), transparent 72%);
+}
+
+.story-content {
+  position: relative;
+  z-index: 2;
+  width: min(100%, 820px);
+  min-height: clamp(680px, 82svh, 900px);
+  justify-content: end;
+  padding: clamp(46px, 8vw, 112px) max(28px, calc((100% - 1240px) / 2));
+}
+
+.story-content h2 {
+  max-width: 760px;
+  font-size: clamp(3.6rem, 7.2vw, 7.5rem);
+  text-wrap: balance;
+}
+
+.story-content h2 em {
+  color: var(--sand);
+}
+
+.story-content > p:not(.eyebrow) {
+  max-width: 48ch;
+  color: rgba(245, 240, 233, .86);
+}
+
+.story-content .line-link {
+  width: min(100%, 390px);
+  border-color: rgba(245, 240, 233, .75);
+}
+
+.story-stamp {
+  right: max(28px, calc((100% - 1240px) / 2));
+  bottom: 42px;
+  width: 126px;
+  height: 126px;
+  border: 1px solid rgba(245, 240, 233, .54);
+  background: rgba(245, 240, 233, .12);
+  color: var(--ivory);
+  backdrop-filter: blur(12px);
+}
+
+@media (max-width: 900px) {
+  .class-explorer {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 48px;
+  }
+
+  .home-experience-preview {
+    min-height: clamp(390px, 110vw, 520px);
+    border-radius: 150px 150px 12px 12px;
+  }
+
+  .class-explorer .experience-list {
+    width: 100%;
+  }
+
+  .class-explorer .experience-list .experience-link {
+    grid-template-columns: 36px minmax(0, 1fr) minmax(0, .9fr) 20px;
+  }
+
+  .story-content {
+    width: 100%;
+    min-height: clamp(680px, 92svh, 820px);
+    padding: 95px 28px 128px;
+  }
+
+  .story-visual {
+    min-height: 0;
+  }
+
+  .story-visual::after {
+    background: linear-gradient(0deg, rgba(21, 32, 27, .9), rgba(21, 32, 27, .24) 76%, rgba(21, 32, 27, .1));
+  }
+
+  .story-stamp {
+    right: 24px;
+    bottom: 22px;
+    width: 100px;
+    height: 100px;
+    font-size: .62rem;
+  }
+
+  .pillar-grid {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: none;
+    gap: 12px;
+  }
+
+  .pillar-grid article,
+  .pillar-grid article:nth-child(2),
+  .pillar-grid article:nth-child(3) {
+    min-height: clamp(380px, 75vw, 530px);
+    padding: clamp(26px, 6vw, 40px);
+  }
+
+  .pillar-grid article:first-child {
+    grid-row: auto;
+  }
+
+  .pillar-grid h3,
+  .pillar-grid article:not(:first-child) h3 {
+    font-size: clamp(3rem, 10vw, 4.25rem);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pillar-grid article.reveal-target {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .pillar-grid .pillar-photo,
+  .pillar-grid a {
+    transition: none;
+  }
+
+  .pillar-grid article:is(:hover, :focus-within) .pillar-photo {
+    transform: none;
+  }
+
+  .home-experience-preview > img,
+  .home-preview-arrow,
+  .class-explorer .experience-list .experience-link > b,
+  .class-explorer .experience-list .experience-link::before,
+  .story-visual > img {
+    animation: none;
+    transition: none;
+  }
+
+  .home-experience-preview > img,
+  .story-section:hover .story-visual > img {
+    transform: none;
+  }
+}

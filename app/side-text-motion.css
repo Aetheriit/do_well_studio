@@ -1,0 +1,33 @@
+/* data-slide-text="from-left|from-right" is applied only after JS starts,
+   so the copy remains readable if scripting or IntersectionObserver is absent. */
+.philosophy,
+.class-explorer,
+.story-section {
+  overflow-x: clip;
+}
+
+[data-slide-text].slide-text-ready {
+  --slide-offset: min(var(--slide-distance, 72px), 12vw);
+  opacity: 0;
+  transform: translate3d(var(--slide-offset), 0, 0);
+  transition:
+    transform var(--animation-duration, 950ms) cubic-bezier(0.16, 1, 0.3, 1) var(--slide-delay, 0ms),
+    opacity var(--animation-duration, 950ms) cubic-bezier(0.16, 1, 0.3, 1) var(--slide-delay, 0ms);
+}
+
+[data-slide-text="from-left"].slide-text-ready {
+  --slide-offset: calc(-1 * min(var(--slide-distance, 72px), 12vw));
+}
+
+[data-slide-text].slide-text-ready.is-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-slide-text].slide-text-ready {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

@@ -1,0 +1,307 @@
+/* Shared type rhythm: retain Do Well's fonts and palette while preventing
+   tight display leading, awkward wraps and small-screen clipping. */
+:where(h1, h2, h3) {
+  text-wrap: balance;
+  overflow-wrap: normal;
+  hyphens: none;
+}
+
+:where(p, li, blockquote) {
+  text-wrap: pretty;
+  overflow-wrap: break-word;
+}
+
+main p:not(.eyebrow) {
+  max-width: min(68ch, 100%);
+  line-height: 1.65;
+}
+
+:is(
+  .hero h1,
+  .sub-hero h1,
+  .story-hero h1,
+  .type-hero h1,
+  .info-hero h1,
+  .journal-hero h1,
+  .not-found-page h1,
+  .detail-hero h1,
+  .experience-title h1,
+  .atlas-opener h1,
+  .reset-title h1,
+  .origin-opener > h1,
+  .visit-opener-copy h1,
+  .class-cinematic-title h1,
+  .class-declaration > h2,
+  .sub-cta h2,
+  .intro-split h2,
+  .path-card h2,
+  .directory-note h2,
+  .detail-intro h2,
+  .focus-panel h2,
+  .detail-visit h2,
+  .ritual-list h2,
+  .safety-note h2,
+  .mission h2,
+  .reset-statement h2,
+  .reset-sequence h2,
+  .belief-manifesto > h2,
+  .story-window-copy h2,
+  .origin-close h2,
+  .visit-information h2,
+  .form-heading h2,
+  .visit-address h2,
+  .request-intro h2,
+  .info-section h2,
+  .info-endcap h2,
+  .chapter-heading h2,
+  .chapter-copy h3,
+  .journey-copy h2,
+  .rhythm-heading h2,
+  .experience-finale h2,
+  .class-question h2,
+  .method-sticky h2,
+  .recovery-care h2,
+  .session-arc-heading h2,
+  .class-focus-new h2,
+  .first-session h2,
+  .next-class-cinematic strong
+) {
+  line-height: 1.02;
+  letter-spacing: -.045em;
+  text-wrap: balance;
+}
+
+.origin-opener > h1 {
+  font-size: clamp(4rem, 6.65vw, 7rem);
+  margin-bottom: 1.25rem;
+  text-align: center;
+}
+
+.origin-opener > h1 em {
+  margin-left: 28vw;
+}
+
+.type-hero h1,
+.atlas-opener h1,
+.origin-opener > h1,
+.class-question h2 {
+  max-width: 100%;
+}
+
+.eyebrow,
+.hero-index,
+.origin-label > span,
+.info-index,
+.directory-card > span,
+.directory-card > small,
+.atlas-list > a > span,
+.atlas-list > a small {
+  line-height: 1.55;
+}
+
+@media (max-width: 900px) {
+  :is(
+    .sub-hero h1,
+    .story-hero h1,
+    .type-hero h1,
+    .info-hero h1,
+    .journal-hero h1,
+    .not-found-page h1,
+    .detail-hero h1,
+    .experience-title h1,
+    .atlas-opener h1,
+    .reset-title h1,
+    .visit-opener-copy h1,
+    .class-cinematic-title h1
+  ) {
+    font-size: clamp(3.1rem, 8.8vw, 5.5rem);
+    line-height: 1.02;
+    letter-spacing: -.045em;
+  }
+
+  .origin-opener > h1 {
+    font-size: clamp(2.75rem, 7.6vw, 4.5rem);
+    line-height: 1.02;
+    letter-spacing: -.045em;
+    margin-inline: auto;
+  }
+
+  .origin-opener > h1 em {
+    margin-left: 0;
+  }
+
+  .visit-faq button strong {
+    line-height: 1.15;
+    text-wrap: balance;
+  }
+
+  .atlas-opener {
+    align-content: center;
+    align-items: start;
+    grid-auto-rows: max-content;
+  }
+
+  .home-hero h1 {
+    font-size: clamp(3.75rem, 10vw, 6.25rem);
+    line-height: .98;
+  }
+
+  .new-visit-form,
+  .visit-form {
+    min-width: 0;
+  }
+}
+
+@media (max-width: 560px) {
+  main p:not(.eyebrow) {
+    line-height: 1.62;
+  }
+
+  :is(
+    .sub-hero h1,
+    .story-hero h1,
+    .type-hero h1,
+    .info-hero h1,
+    .journal-hero h1,
+    .not-found-page h1,
+    .detail-hero h1,
+    .experience-title h1,
+    .atlas-opener h1,
+    .reset-title h1,
+    .visit-opener-copy h1,
+    .class-cinematic-title h1
+  ) {
+    font-size: clamp(2.65rem, 10.5vw, 4.2rem);
+    line-height: 1.04;
+    letter-spacing: -.04em;
+  }
+
+  .origin-opener {
+    min-height: 0;
+    padding: 8.5rem 1.25rem 4rem;
+  }
+
+  .origin-opener > h1 {
+    max-width: 100%;
+    margin: 3.5rem 0 1.5rem;
+    font-size: clamp(2.35rem, 10.7vw, 3.7rem);
+    line-height: 1.06;
+    letter-spacing: -.035em;
+  }
+
+  .origin-opener > h1 span:nth-child(2),
+  .origin-opener > h1 em {
+    margin-left: 0;
+  }
+
+  .origin-collage {
+    height: 31rem;
+  }
+
+  .origin-collage > p {
+    width: min(18rem, 76%);
+    padding: 1.1rem;
+    font-size: .88rem;
+    line-height: 1.55;
+  }
+
+  .philosophy h2,
+  .class-explorer h2,
+  .story-content h2,
+  .recovery h2,
+  .visit h2,
+  .info-section h2,
+  .info-endcap h2,
+  .class-question h2,
+  .belief-manifesto > h2,
+  .reset-statement h2,
+  .reset-sequence h2,
+  .request-intro h2,
+  .origin-close h2,
+  .story-window-copy h2 {
+    line-height: 1.05;
+    letter-spacing: -.04em;
+  }
+
+  .origin-label {
+    gap: 1rem;
+  }
+
+  .origin-label > span {
+    font-size: .58rem;
+    letter-spacing: .06em;
+  }
+
+  .class-directory,
+  .path-stack,
+  .atlas-browser,
+  .visit-contact,
+  .visit-layout,
+  .request-section,
+  .session-arc,
+  .reset-statement,
+  .reset-sequence,
+  .ritual-story,
+  .name-chapter,
+  .belief-manifesto,
+  .class-declaration,
+  .first-session,
+  .info-sections,
+  .journal-grid {
+    min-width: 0;
+  }
+
+  .class-declaration > h2,
+  .session-arc-heading h2,
+  .class-focus-new h2,
+  .first-session h2,
+  .class-method h2,
+  .recovery-care h2,
+  .ritual-list h2,
+  .detail-intro h2,
+  .focus-panel h2,
+  .directory-note h2,
+  .sub-cta h2,
+  .intro-split h2,
+  .detail-visit h2,
+  .chapter-copy h3,
+  .journey-copy h2,
+  .rhythm-heading h2,
+  .experience-finale h2 {
+    line-height: 1.05;
+    letter-spacing: -.04em;
+  }
+
+  .next-class-cinematic strong {
+    max-width: calc(100% - 2.5rem);
+    font-size: clamp(2.35rem, 10vw, 4rem);
+    line-height: 1.04;
+    letter-spacing: -.04em;
+  }
+
+  .name-entries h3 {
+    font-size: clamp(3.5rem, 18vw, 6rem);
+    line-height: 1.02;
+  }
+
+  .experience-list a > strong,
+  .atlas-list h2,
+  .directory-card h2 {
+    line-height: 1.12;
+    text-wrap: balance;
+  }
+
+  .detail-meta,
+  .cinematic-meta {
+    gap: clamp(1.25rem, 7vw, 2.5rem);
+  }
+
+  .footer-bottom,
+  .story-stats,
+  .arrival-strip,
+  .visit-faq button,
+  .new-visit-form,
+  .visit-form {
+    overflow-wrap: anywhere;
+  }
+}

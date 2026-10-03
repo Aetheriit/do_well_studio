@@ -1,0 +1,11 @@
+node_modules/
+.next/
+.next-dev/
+.next-build/
+.next-production/
+*.tsbuildinfo
+.npm-cache/
+*.log
+.env*.local
+/data/
+DO_WELL.mp4

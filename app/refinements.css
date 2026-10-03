@@ -1,0 +1,325 @@
+:root {
+  --editorial-gutter: clamp(1.25rem, 5.2vw, 4.5rem);
+  --editorial-space: clamp(6rem, 9.5vw, 8.75rem);
+  --motion-quick: 180ms;
+  --motion-ui: 360ms;
+  --motion-editorial: 760ms;
+}
+
+/* Give long-form sections a steadier rhythm without changing the existing palette. */
+:is(
+  .experience-manifesto,
+  .week-rhythm,
+  .reset-statement,
+  .reset-sequence,
+  .recovery-care,
+  .name-chapter,
+  .belief-manifesto,
+  .origin-close,
+  .visit-contact,
+  .visit-faq,
+  .request-section,
+  .session-arc,
+  .class-declaration,
+  .class-focus-new,
+  .first-session,
+  .class-method,
+  .class-question
+) {
+  padding-block: var(--editorial-space);
+}
+
+/* Reveal motion should feel editorial and stay clear of nearby copy. */
+.reveal-target:not([data-mask]):not([data-line-reveal]) {
+  transform: translate3d(0, 1.5rem, 0);
+  transition-duration: var(--motion-editorial);
+}
+
+.reveal-target.is-visible:not([data-mask]):not([data-line-reveal]) {
+  transform: translate3d(0, 0, 0);
+}
+
+:is(.experience-title, .reset-title, .visit-opener-copy, .class-cinematic-title) > * {
+  animation: editorial-arrive 760ms cubic-bezier(.16, 1, .3, 1) both;
+}
+
+:is(.experience-title, .reset-title, .visit-opener-copy, .class-cinematic-title) > *:nth-child(2) {
+  animation-delay: 90ms;
+}
+
+:is(.experience-title, .reset-title, .visit-opener-copy, .class-cinematic-title) > *:nth-child(3) {
+  animation-delay: 180ms;
+}
+
+.atlas-opener > div:first-child,
+.origin-opener > h1 {
+  animation: editorial-arrive 760ms cubic-bezier(.16, 1, .3, 1) both;
+}
+
+@keyframes editorial-arrive {
+  from {
+    opacity: 0;
+    translate: 0 1.25rem;
+  }
+
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
+.button,
+.visit-nav,
+.line-link,
+.experience-list button,
+.atlas-list > a {
+  transition-duration: var(--motion-ui);
+}
+
+.button:not(:disabled) {
+  transition-property: translate, box-shadow;
+}
+
+.button:not(:disabled):hover,
+.button:not(:disabled):focus-visible {
+  translate: 0 -2px;
+}
+
+.button:not(:disabled):active {
+  translate: 0 0;
+}
+
+.button b,
+.line-link span,
+.atlas-list > a > b {
+  display: inline-block;
+  transition: translate var(--motion-ui) cubic-bezier(.16, 1, .3, 1);
+}
+
+.button:hover b,
+.line-link:hover span,
+.atlas-list > a:hover > b {
+  translate: 3px -2px;
+}
+
+/* Classes atlas: tighten interaction feedback while preserving its content and palette. */
+.atlas-opener {
+  padding-bottom: calc(var(--editorial-space) + 3.375rem);
+}
+
+.atlas-browser {
+  align-items: start;
+  gap: clamp(3rem, 6vw, 6rem);
+}
+
+.atlas-preview {
+  top: 7.25rem;
+}
+
+.atlas-photo img {
+  transition: transform 850ms cubic-bezier(.16, 1, .3, 1), filter 500ms ease;
+}
+
+.atlas-photo:hover img {
+  transform: scale(1.025);
+}
+
+.atlas-preview-meta > * {
+  transition: opacity var(--motion-ui), translate var(--motion-ui);
+}
+
+.atlas-list > a {
+  position: relative;
+  padding-block: .75rem;
+  border-inline-start: 2px solid transparent;
+}
+
+.atlas-list > a::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 100%;
+  background: rgba(255, 255, 255, .035);
+  opacity: 0;
+  transition: opacity var(--motion-ui);
+  pointer-events: none;
+}
+
+.atlas-list > a:hover::before,
+.atlas-list > a:focus-visible::before {
+  opacity: 1;
+}
+
+.atlas-list > a.active {
+  border-inline-start-color: var(--sand);
+}
+
+.atlas-list > a > :is(span, div, small, b) {
+  position: relative;
+}
+
+.atlas-filters button:focus-visible,
+.atlas-list > a:focus-visible {
+  outline-color: var(--sand);
+  outline-offset: 4px;
+}
+
+.atlas-filters button {
+  min-height: 42px;
+}
+
+.atlas-count {
+  margin-bottom: 1.1rem;
+}
+
+.method-steps article {
+  transition: padding-inline-start var(--motion-ui) cubic-bezier(.16, 1, .3, 1);
+}
+
+.method-steps article:hover {
+  padding-inline-start: .65rem;
+}
+
+@media (max-width: 900px) {
+  .atlas-opener {
+    padding-bottom: 7.5rem;
+  }
+
+  .atlas-browser {
+    gap: 3.5rem;
+  }
+
+  .atlas-preview {
+    top: auto;
+  }
+}
+
+@media (max-width: 560px) {
+  .atlas-opener {
+    padding-bottom: 7rem;
+  }
+
+  .atlas-browser {
+    padding-top: 4.5rem;
+    padding-bottom: 4.5rem;
+  }
+
+  .atlas-photo {
+    height: min(112vw, 31rem);
+  }
+
+  .atlas-list > a {
+    min-height: 5.75rem;
+    grid-template-columns: 2rem minmax(0, 1fr) 1.5rem;
+    gap: .75rem;
+  }
+
+  .atlas-list h2 {
+    font-size: clamp(1.6rem, 8vw, 2.1rem);
+  }
+
+  .atlas-filters {
+    gap: .5rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .atlas-filters button {
+    padding-inline: .85rem;
+  }
+}
+
+:where(a, button, input, select, textarea):focus-visible {
+  scroll-margin-block: 7rem;
+}
+
+@media (min-width: 901px) and (max-width: 1200px) {
+  :root {
+    --editorial-gutter: clamp(1.75rem, 4vw, 3.25rem);
+    --editorial-space: clamp(5.5rem, 8vw, 7.5rem);
+  }
+
+  .class-explorer,
+  .visit-contact,
+  .session-arc,
+  .reset-sequence {
+    gap: clamp(2rem, 5vw, 4rem);
+  }
+
+  .atlas-browser {
+    gap: 5vw;
+  }
+}
+
+@media (max-width: 900px) {
+  :root {
+    --editorial-gutter: 1.5rem;
+    --editorial-space: clamp(5rem, 11vw, 6rem);
+  }
+
+  .ritual-story {
+    padding: 4.5rem 1.5rem 5rem;
+  }
+
+  .ritual-story > span {
+    margin-bottom: clamp(2.75rem, 8vw, 4rem);
+  }
+}
+
+@media (max-width: 560px) {
+  :root {
+    --editorial-gutter: 1.25rem;
+    --editorial-space: 4.75rem;
+  }
+
+  .reset-opener {
+    height: auto;
+    min-height: max(42rem, 94svh);
+    padding: 8.5rem 1.25rem 5rem;
+  }
+
+  .reset-title h1 {
+    font-size: clamp(3.5rem, 13vw, 4.85rem);
+    line-height: .88;
+  }
+
+  .reset-title > p:last-child {
+    max-width: 34ch;
+    margin-top: 1.25rem;
+  }
+
+  .breath-ring {
+    width: 54vw;
+    top: 6.5rem;
+    right: -14vw;
+    opacity: .52;
+  }
+
+  .ritual-story {
+    min-height: 34rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :is(.experience-title, .reset-title, .visit-opener-copy, .class-cinematic-title) > *,
+  .atlas-opener > div:first-child,
+  .origin-opener > h1 {
+    animation: none;
+  }
+
+  .button:not(:disabled):hover,
+  .button:not(:disabled):focus-visible,
+  .button:not(:disabled):active,
+  .button:hover b,
+  .line-link:hover span,
+  .atlas-list > a:hover > b {
+    translate: none;
+  }
+
+  .atlas-photo:hover img {
+    transform: none;
+  }
+
+  .method-steps article:hover {
+    padding-inline-start: 0;
+  }
+}

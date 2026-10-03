@@ -1,0 +1,10 @@
+.threeui-command-page {
+  min-height: 100dvh;
+  background: #07080c;
+}
+
+.threeui-command-page .shader-frame {
+  width: 100%;
+  height: 100dvh;
+  min-height: 540px;
+}

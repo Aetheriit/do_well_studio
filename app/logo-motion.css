@@ -1,0 +1,187 @@
+/* A short first-load brand moment. The site remains usable without JavaScript. */
+.logo-intro {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 50% 43%, rgba(114, 125, 113, .62), transparent 47%),
+    #263d36;
+  animation: logo-intro-leave 460ms ease-in 1.65s forwards;
+}
+
+.logo-intro__aura {
+  position: absolute;
+  width: min(720px, 130vw);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(220, 201, 182, .23), rgba(220, 201, 182, .045) 42%, transparent 67%);
+  filter: blur(15px);
+  animation: logo-aura-breathe 1.8s ease-in-out both;
+}
+
+.logo-intro__body {
+  position: relative;
+  width: min(460px, 82vw);
+  display: grid;
+  justify-items: center;
+  gap: 28px;
+  animation: logo-intro-arrive 830ms cubic-bezier(.16, 1, .3, 1) both;
+}
+
+.logo-intro__glass {
+  position: relative;
+  width: 100%;
+  height: clamp(112px, 27vw, 154px);
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  isolation: isolate;
+  border: 1px solid rgba(255, 255, 255, .77);
+  border-radius: 999px;
+  background: linear-gradient(155deg, rgba(255, 255, 255, .82), rgba(245, 240, 233, .72) 53%, rgba(220, 201, 182, .82));
+  box-shadow:
+    inset 0 2px 2px rgba(255, 255, 255, .95),
+    inset 0 -8px 18px rgba(78, 72, 64, .12),
+    inset 0 0 0 8px rgba(255, 255, 255, .1),
+    0 26px 75px rgba(10, 25, 20, .3);
+  -webkit-backdrop-filter: blur(24px) saturate(1.25);
+  backdrop-filter: blur(24px) saturate(1.25);
+}
+
+.logo-intro__glass::before {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  inset: -40% auto -40% -45%;
+  width: 42%;
+  transform: rotate(18deg) translateX(-120%);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .2) 30%, rgba(255, 255, 255, .72) 52%, transparent);
+  filter: blur(6px);
+  animation: logo-light-cross 1.15s cubic-bezier(.25, .46, .45, .94) 440ms both;
+  pointer-events: none;
+}
+
+.logo-intro__refraction {
+  position: absolute;
+  inset: 4px;
+  border: 1px solid rgba(255, 255, 255, .45);
+  border-radius: inherit;
+  box-shadow: inset 0 1px 8px rgba(255, 255, 255, .52);
+  pointer-events: none;
+}
+
+.logo-intro__glass img {
+  position: relative;
+  z-index: 1;
+  width: 91%;
+  height: auto;
+  mix-blend-mode: multiply;
+  filter: drop-shadow(0 3px 5px rgba(76, 45, 31, .1));
+}
+
+.logo-intro__caption {
+  color: rgba(245, 240, 233, .8);
+  font: 500 .6rem "DM Mono", monospace;
+  letter-spacing: .2em;
+  text-align: center;
+  animation: logo-caption-arrive 650ms ease 410ms both;
+}
+
+/* The navigation keeps a quieter version of the same glass language. */
+.logo.glass-logo {
+  position: relative;
+  width: 190px;
+  height: 58px;
+  flex: 0 0 auto;
+  justify-content: center;
+  padding: 0 8px;
+  isolation: isolate;
+  border: 1px solid rgba(255, 255, 255, .78);
+  border-radius: 15px;
+  background: linear-gradient(150deg, rgba(255, 255, 255, .94), rgba(245, 240, 233, .8) 55%, rgba(220, 201, 182, .72));
+  box-shadow: inset 0 1px rgba(255, 255, 255, .9), inset 0 -5px 10px rgba(73, 54, 42, .07), 0 6px 18px rgba(24, 39, 32, .09);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  transition: transform 420ms cubic-bezier(.16, 1, .3, 1), box-shadow 420ms ease;
+}
+
+.logo.glass-logo::before {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  top: -35%;
+  bottom: -35%;
+  left: -50%;
+  width: 38%;
+  transform: rotate(16deg) translateX(-160%);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .54), transparent);
+  filter: blur(4px);
+  animation: glass-logo-sweep 7.5s ease-in-out 2.2s infinite;
+  pointer-events: none;
+}
+
+.glass-logo__light {
+  position: absolute;
+  inset: 1px;
+  border-radius: inherit;
+  border: 1px solid rgba(255, 255, 255, .32);
+  box-shadow: inset 0 1px 5px rgba(255, 255, 255, .4);
+  pointer-events: none;
+}
+
+.logo.glass-logo img {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: auto;
+  mix-blend-mode: multiply;
+}
+
+.logo.glass-logo:hover,
+.logo.glass-logo:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: inset 0 1px rgba(255, 255, 255, .94), inset 0 -5px 10px rgba(73, 54, 42, .06), 0 11px 24px rgba(24, 39, 32, .16);
+}
+
+@keyframes logo-intro-arrive {
+  from { opacity: 0; transform: translateY(22px) scale(.93); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes logo-intro-leave {
+  to { opacity: 0; visibility: hidden; pointer-events: none; }
+}
+
+@keyframes logo-light-cross {
+  to { transform: rotate(18deg) translateX(950%); }
+}
+
+@keyframes logo-caption-arrive {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes logo-aura-breathe {
+  from { opacity: .35; transform: scale(.82); }
+  to { opacity: 1; transform: scale(1.14); }
+}
+
+@keyframes glass-logo-sweep {
+  0%, 72% { transform: rotate(16deg) translateX(-160%); }
+  86%, 100% { transform: rotate(16deg) translateX(850%); }
+}
+
+@media (max-width: 900px) {
+  .logo.glass-logo { width: 150px; height: 50px; border-radius: 12px; padding-inline: 5px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .logo-intro { display: none; }
+  .logo.glass-logo,
+  .logo.glass-logo::before { animation: none; transition: none; }
+  .logo.glass-logo:hover,
+  .logo.glass-logo:focus-visible { transform: none; }
+}
