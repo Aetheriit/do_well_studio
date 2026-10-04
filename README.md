@@ -6,7 +6,7 @@ The launcher checks for existing Next.js server processes from this exact projec
 
 Node.js 18.18 or newer and npm are required. If dependencies are missing, the launcher runs npm install on the first start. Later starts use the installed local packages. No CMS, CRM, or hosted service is required to open the local website.
 
-Local development uses .next-dev, while npm run build uses .next, so a production build does not overwrite the running preview's compiled files. Visit requests made locally are stored under data/leads.
+Local development uses .next-dev, while npm run build uses .next-production, so a production build does not overwrite the running preview's compiled files. Visit requests made locally are stored under data/leads.
 
 If startup fails, read do-well-startup.log, do-well-server.log, and do-well-server-error.log in this folder. To start without opening a browser, run:
 

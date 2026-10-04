@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { StudioNavigation } from "../components/SubpageShell";
 import HomeClassExplorer from "../components/HomeClassExplorer";
+import DoWellGuide from "../components/DoWellGuide";
 import WhatsAppWidget from "../components/WhatsAppWidget";
 
 export const metadata = {
@@ -26,7 +27,7 @@ export default function HomePage() {
         <a className="scroll-cue" href="#the-way"><span>Discover the way</span><i>↓</i></a>
       </section>
 
-      <div className="ticker" aria-hidden="true"><div>STRENGTH <i>✳</i> MINDFULNESS <i>✳</i> RECOVERY <i>✳</i> BEYOND FITNESS <i>✳</i> STRENGTH <i>✳</i> MINDFULNESS <i>✳</i> RECOVERY <i>✳</i> BEYOND FITNESS <i>✳</i></div></div>
+      <div className="dw-wayline"><span>THE WAY TO LIVE WELL</span><strong>Strength <i>→</i> Mindfulness <i>→</i> Recovery</strong><span>JUBILEE HILLS · HYDERABAD</span></div>
 
       <section className="philosophy" id="the-way">
         <span className="section-mark" aria-hidden="true">DW</span>
@@ -38,6 +39,8 @@ export default function HomePage() {
           <article data-reveal><Image className="pillar-photo" src="/pillar-recovery.webp" alt="" fill sizes="(max-width: 900px) 100vw, 37vw"/><span>03 / RESTORE</span><h3>Recovery</h3><p>Sauna, cold plunge and red-light experiences in a calmer rhythm.</p><Link href="/recovery">Explore recovery <b aria-hidden="true">↗</b></Link></article>
         </div>
       </section>
+
+      <DoWellGuide />
 
       <HomeClassExplorer />
 

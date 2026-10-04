@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { experiences } from "../lib/experiences";
+import { journalEntries } from "../lib/journal";
 
 const routes = ["/", "/experience", "/our-story", "/classes", "/recovery", "/schedule", "/coaches", "/membership", "/visit", "/contact", "/journal", "/privacy", "/terms"];
 
@@ -9,7 +10,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const base = origin.replace(/\/$/, "");
   const paths = [
     ...routes,
-    ...experiences.map(item => `/classes/${item.slug}`),
+    ...experiences.filter(item => item.slug !== "do-reset" && item.slug !== "do-complete").map(item => `/classes/${item.slug}`),
+    ...journalEntries.map(item => `/journal/${item.slug}`),
     "/recovery/sauna",
     "/recovery/cold-plunge",
     "/recovery/red-light-therapy",

@@ -1,48 +1,36 @@
-# Do Well Studio — Project Progress Report
+# Do Well Studio — project progress
 
-**Snapshot date:** October 3, 2026
+**Updated:** October 4, 2026
 
 ## Current state
 
-The project is configured as a local Next.js app and is running at `http://127.0.0.1:3010`. Dependencies are installed. The in-app browser is currently on the Recovery page.
+The project is a local Next.js website served at `http://127.0.0.1:3010`. The same server handles the public pages and the `/api/leads` and `/api/health` endpoints. `Start Do Well Studio.bat` launches it locally.
 
-Recent setup fixes restored the intended routes: `/` now redirects to `/experience`, and `/classes` renders the existing class browser instead of a class-detail page with no slug. The Classes page was observed rendering all eight listed experiences.
+The site presents Do Well as a Jubilee Hills wellness studio built around strength, mindfulness and recovery. Its main conversion is a studio visit request, with WhatsApp as a direct follow-up route.
 
-Current checks observed: `/` redirects (307), `/experience`, `/classes`, `/recovery`, and `/story` return 200, and `/api/health` returns 200. A production build and automated checks have not been run.
+## Implemented
 
-## What is implemented
+- Homepage with a cinematic opening, three brand pillars, an interactive “how do you want to feel?” guide, all eight named experiences, studio story and visit invitation.
+- Classes catalogue with filters and six class detail pages. Do Reset and Do Complete lead to their dedicated Recovery and Membership pages; the older class URLs redirect there.
+- Programme-based Schedule guide with verified class names, formats, levels and published durations. Live times are requested from the studio rather than invented.
+- Do Complete Membership, coaching approach and contact pages with Do Well-specific information and direct enquiries.
+- Do Reset overview and sauna, cold plunge and red-light detail pages, with direct links between them and cautious safety wording.
+- Journal index and four short articles connected to relevant practices.
+- Visit request form with validation, consent, local lead storage and saved/error states; persistent WhatsApp contact widget.
+- Responsive navigation, reduced-motion support, metadata and sitemap entries for the public content.
 
-- Marketing pages for Experience, Classes, Recovery, Our Story, and Visit.
-- A catalogue of eight experiences, category filters, and dynamic class-detail routes.
-- Visit-request form with client/server validation, consent capture, duplicate-request handling, and clear saved/error states.
-- `POST /api/leads` stores requests as JSON files under `data/leads`; `GET /api/health` provides a health check.
-- Shared navigation, responsive styling, scroll/reveal motion, studio contact links, and a Windows launcher on port 3010.
+## Verification on October 4
 
-## Main gaps and risks
+- `npx tsc --noEmit` passed.
+- `npm run build` passed and generated 35 static pages.
+- Desktop and 390px mobile render checks covered the homepage guide, Schedule, Membership, Journal, Coaches and Contact. The checked mobile pages had no horizontal overflow.
+- The interactive homepage guide changed the selected experience in the browser. Key routes returned 200; the old Do Reset and Do Complete class URLs returned redirects as intended.
 
-- Leads are saved on the local filesystem only. There is no staff notification, admin inbox, CRM, or durable shared database, so this needs a production storage and follow-up plan before deployment.
-- The site requests a visit but does not check availability or confirm an appointment; the page directs visitors to WhatsApp for confirmation.
-- The visit form collects phone/email and consent, but there is no privacy page in the current route set. Confirm the consent wording and publish appropriate privacy information before collecting real leads.
-- The project pins Next.js 15.2.4. npm emitted a security warning for this version referencing CVE-2025-66478; move to a patched compatible release before exposing the site publicly.
-- Business details such as address, phone/WhatsApp, operating hours, class descriptions, and any prices or membership claims should be checked with the studio.
-- Most editorial imagery is loaded from Unsplash at runtime. Confirm asset suitability and plan for reliable, performant production image delivery.
-- No README or deployment guide is present. The declared lint command and production build have not been verified in this snapshot.
+## Before public launch
 
-## Recommended next steps
+- The studio should approve the copy, address, phone number, photographs and every operational detail. Current programme times, prices, coach identities, age suitability and recovery protocols are not published as facts without confirmation.
+- Editorial imagery is illustrative. Replace it with approved Do Well photography where available.
+- Local lead files are not suitable as a shared production CRM. Connect durable lead storage and staff notifications before accepting production enquiries.
+- CMS, analytics, consent setup, production deployment and monitoring still require configuration.
 
-1. Confirm the intended first release: information and visit requests, or real-time scheduling and booking.
-2. Upgrade Next.js to a patched compatible release and verify dependency/security status.
-3. Choose durable lead storage and a staff follow-up path; add appropriate access controls, retention, and spam protection.
-4. Confirm studio content and contact details, then add privacy information for the lead form.
-5. Run the production build and a focused review of the main pages, mobile layout, navigation, and visit-request flow.
-6. Select the hosting target, configure production startup and health checks, and document setup/deployment in a README.
-
-## Useful local commands
-
-```powershell
-npm install
-npm run dev
-npm run build
-```
-
-The Windows launcher Start Do Well Studio.bat restarts only this project's local Next.js server, waits for both the frontend and API health check, then opens the site. See README.md for current local-run instructions.
+See `README.md` for local startup instructions.

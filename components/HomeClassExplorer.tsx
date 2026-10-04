@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import { experiences } from "../lib/experiences";
+import { experienceHref, experiences } from "../lib/experiences";
 
 export default function HomeClassExplorer() {
   const initialExperience = experiences.find((item) => item.slug === "do-flow") ?? experiences[0];
@@ -20,7 +20,7 @@ export default function HomeClassExplorer() {
           <Link className="button button-light" href="/classes">Explore all experiences <b aria-hidden="true">↗</b></Link>
         </div>
 
-        <Link className="home-experience-preview" href={`/classes/${featured.slug}`} aria-label={`Explore ${featured.name}, ${featured.type}`}>
+        <Link className="home-experience-preview" href={experienceHref(featured.slug)} aria-label={`Explore ${featured.name}, ${featured.type}`}>
           <Image key={featured.slug} src={featured.image} alt={`Illustrative movement scene for ${featured.name}`} fill sizes="(max-width: 900px) 100vw, 42vw" />
           <span className="home-preview-index">{String(experiences.findIndex((item) => item.slug === featured.slug) + 1).padStart(2, "0")} / 08</span>
           <span className="home-preview-copy"><strong>{featured.name}</strong><small>{featured.cue}</small></span>
@@ -31,7 +31,7 @@ export default function HomeClassExplorer() {
       <nav className="experience-list" aria-label="Explore studio experiences">
         {experiences.map((item, index) => (
           <Link
-            href={`/classes/${item.slug}`}
+            href={experienceHref(item.slug)}
             key={item.slug}
             className={`experience-link${featured.slug === item.slug ? " active" : ""}`}
             data-featured={featured.slug === item.slug ? "true" : undefined}

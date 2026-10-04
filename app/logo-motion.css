@@ -14,7 +14,7 @@
 
 .logo-intro__aura {
   position: absolute;
-  width: min(720px, 130vw);
+  width: min(720px, 90vw);
   aspect-ratio: 1;
   border-radius: 50%;
   background: radial-gradient(circle, rgba(220, 201, 182, .23), rgba(220, 201, 182, .045) 42%, transparent 67%);

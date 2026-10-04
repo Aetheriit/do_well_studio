@@ -35,7 +35,7 @@ export default function StoryPage() {
     </section>
 
     <section className="story-window">
-      <div className="story-window-photo" data-mask><Image src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1900&q=88" alt="A warm and considered studio interior" fill sizes="100vw" data-parallax="0.09"/></div>
+      <div className="story-window-photo" data-mask><Image src="/story-interior-editorial.webp" alt="Illustrative warm wellness space with natural materials and room to move" fill sizes="100vw" data-parallax="0.09"/></div>
       <div className="story-window-copy" data-reveal><p className="eyebrow light-text">The space</p><h2>Made to change<br/>how you arrive.</h2><p>Warm light. Natural textures. A quieter visual rhythm. The studio prepares you for the work before the session even begins.</p></div>
     </section>
 

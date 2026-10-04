@@ -10,6 +10,7 @@ import "./side-text-motion.css";
 import "./glass-actions.css";
 import "./reference-upgrades.css";
 import "./typography-polish.css";
+import "./brand-depth.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "http://127.0.0.1:3010"),

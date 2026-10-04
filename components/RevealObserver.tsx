@@ -23,16 +23,26 @@ export default function RevealObserver() {
       node.style.setProperty("--reveal-delay", `${Math.min(index % 5, 4) * 55}ms`);
     });
 
+    // A fully clipped mask has no visible intersection area in some browsers.
+    // Observe its unclipped wrapper, then reveal the intended image element.
+    const revealTargets = new Map<Element, HTMLElement[]>();
+    nodes.forEach((node) => {
+      const observedElement = node.hasAttribute("data-mask") ? node.parentElement || node : node;
+      const targets = revealTargets.get(observedElement) || [];
+      targets.push(node);
+      revealTargets.set(observedElement, targets);
+    });
+
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          entry.target.classList.add("is-visible");
+          revealTargets.get(entry.target)?.forEach((target) => target.classList.add("is-visible"));
           observer.unobserve(entry.target);
         }
       });
     }, { threshold: 0.12, rootMargin: "0px 0px -7% 0px" });
 
-    nodes.forEach((node) => observer.observe(node));
+    revealTargets.forEach((_, observedElement) => observer.observe(observedElement));
 
     const root = document.documentElement;
     root.style.setProperty("--slide-distance", `${slideTextSettings.slideDistance}px`);
