@@ -1,12 +1,14 @@
 # Do Well Studio — local run
 
-Double-click **Start Do Well Studio.bat** in this folder. It starts the Next.js application at [http://127.0.0.1:3010](http://127.0.0.1:3010) and opens that address in your default browser. The same local server runs the website and its API, including /api/health and /api/leads.
+Double-click **Start Do Well Studio.bat** in this folder. It starts the Next.js application at [http://127.0.0.1:3010](http://127.0.0.1:3010) and opens that address in your default browser. The same local server runs the website and its health API at /api/health.
 
 The launcher checks for existing Next.js server processes from this exact project folder, force-stops them, waits for port 3010 to clear, then starts a fresh instance. It will not stop an unrelated program that happens to use port 3010; in that case it shows an error.
 
 Node.js 18.18 or newer and npm are required. If dependencies are missing, the launcher runs npm install on the first start. Later starts use the installed local packages. No CMS, CRM, or hosted service is required to open the local website.
 
-Local development uses .next-dev, while npm run build uses .next, so a production build does not overwrite the running preview's compiled files. The production directory matches Vercel's default Next.js output directory. Visit requests made locally are stored under data/leads.
+Local development uses .next-dev, while npm run build uses .next, so a production build does not overwrite the running preview's compiled files. The production directory matches Vercel's default Next.js output directory.
+
+All website enquiries open WhatsApp for Do Well Studio at +91 86882 17765. Class, recovery, schedule, membership, coach and general enquiry links prepare a message matching their subject. The visit form includes each entered field and preserves the visitor's message and line breaks. Visitors review the prepared message and tap Send in WhatsApp. The website does not store enquiries, and the retired /api/leads endpoint no longer accepts submissions.
 
 If startup fails, read do-well-startup.log, do-well-server.log, and do-well-server-error.log in this folder. To start without opening a browser, run:
 

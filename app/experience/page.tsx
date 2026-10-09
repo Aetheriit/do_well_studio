@@ -1,3 +1,4 @@
+import { enquiryUrl } from "../../lib/whatsapp";
 import Image from "next/image";
 import Link from "next/link";
 import SubpageShell from "../../components/SubpageShell";
@@ -37,7 +38,7 @@ export default function ExperiencePage() {
     <section className="experience-finale">
       <Image src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=2000&q=88" alt="A calm considered wellness interior" fill sizes="100vw" data-parallax="0.08"/>
       <div className="experience-finale-shade"/>
-      <div data-reveal><p className="eyebrow light-text">Make it yours</p><h2>Start with what<br/>you need <em>today.</em></h2><Link className="button button-light" href="/visit">Plan a studio visit <b>↗</b></Link></div>
+      <div data-reveal><p className="eyebrow light-text">Make it yours</p><h2>Start with what<br/>you need <em>today.</em></h2><Link className="button button-light" href={enquiryUrl("Studio visit", "I would like help choosing an experience and planning my visit.")} target="_blank" rel="noopener noreferrer">Plan a studio visit <b>↗</b></Link></div>
     </section>
   </main></SubpageShell>;
 }

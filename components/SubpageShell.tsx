@@ -1,5 +1,6 @@
 "use client";
 
+import { enquiryUrl } from "../lib/whatsapp";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -190,7 +191,7 @@ export default function SubpageShell({ children }: { children: React.ReactNode }
   return <>
     <StudioNavigation />
     {children}
-    <footer className="sub-footer"><div className="footer-brand"><Image src="/do-well-logo.png" alt="Do Well Studio" width={360} height={150}/><p>Strength. Mindfulness. Recovery.<br/>Beyond Fitness.</p></div><div><p className="eyebrow">Explore</p><Link href="/experience">Experience</Link><Link href="/classes">Classes</Link><Link href="/recovery">Recovery</Link><Link href="/schedule">Schedule</Link><Link href="/membership">Membership</Link><Link href="/our-story">Our story</Link><Link href="/journal">Journal</Link></div><div><p className="eyebrow">Connect</p><Link href="/visit">Visit the studio</Link><Link href="/contact">Contact</Link><Link href="/coaches">Coaches</Link><a href="https://wa.me/918688217765" target="_blank" rel="noopener noreferrer">WhatsApp</a><a href="tel:+918688217765">86882 17765</a></div><div className="footer-bottom"><span>© {new Date().getFullYear()} Do Well Studio</span><span>Jubilee Hills · Hyderabad</span><span>Beyond fitness.</span><Link href="/privacy">Privacy</Link><Link href="/terms">Terms</Link></div></footer>
+    <footer className="sub-footer"><div className="footer-brand"><Image src="/do-well-logo.png" alt="Do Well Studio" width={360} height={150}/><p>Strength. Mindfulness. Recovery.<br/>Beyond Fitness.</p></div><div><p className="eyebrow">Explore</p><Link href="/experience">Experience</Link><Link href="/classes">Classes</Link><Link href="/recovery">Recovery</Link><Link href="/schedule">Schedule</Link><Link href="/membership">Membership</Link><Link href="/our-story">Our story</Link><Link href="/journal">Journal</Link></div><div><p className="eyebrow">Connect</p><Link href="/visit">Visit the studio</Link><Link href="/contact">Contact</Link><Link href="/coaches">Coaches</Link><a href={enquiryUrl("General enquiry", "I would like to enquire about Do Well Studio. Please help me with the current options.")} target="_blank" rel="noopener noreferrer">WhatsApp</a><a href={enquiryUrl("General enquiry", "I would like to speak with the Do Well Studio team about an enquiry.")} target="_blank" rel="noopener noreferrer">86882 17765</a></div><div className="footer-bottom"><span>© {new Date().getFullYear()} Do Well Studio</span><span>Jubilee Hills · Hyderabad</span><span>Beyond fitness.</span><Link href="/privacy">Privacy</Link><Link href="/terms">Terms</Link></div></footer>
     <WhatsAppWidget />
   </>;
 }

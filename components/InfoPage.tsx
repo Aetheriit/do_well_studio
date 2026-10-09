@@ -1,3 +1,4 @@
+import { enquiryUrl } from "../lib/whatsapp";
 import Image from "next/image";
 import Link from "next/link";
 import SubpageShell from "./SubpageShell";
@@ -13,7 +14,7 @@ export default function InfoPage({
   imageAlt = "",
   sections,
   cta = "Plan a studio visit",
-  href = "/visit",
+  href = enquiryUrl("Studio visit", "I would like to plan a visit and find the right experience."),
 }: {
   eyebrow: string;
   title: string;

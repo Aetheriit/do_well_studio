@@ -1,5 +1,6 @@
 "use client";
 
+import { enquiryUrl } from "../lib/whatsapp";
 import Image from "next/image";
 import Link from "next/link";
 import { useMemo, useState } from "react";
@@ -43,6 +44,6 @@ export default function ClassAtlas() {
       </div>
     </section>
 
-    <section className="class-question" data-reveal><p className="eyebrow">Still choosing?</p><h2>Tell us how you want<br/>to feel when you leave.</h2><Link href="/visit">Let the studio guide you <span>↗</span></Link></section>
+    <section className="class-question" data-reveal><p className="eyebrow">Still choosing?</p><h2>Tell us how you want<br/>to feel when you leave.</h2><Link href={enquiryUrl("Studio visit", "I would like help choosing an experience and planning my visit.")} target="_blank" rel="noopener noreferrer">Let the studio guide you <span>↗</span></Link></section>
   </>;
 }

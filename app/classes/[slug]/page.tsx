@@ -1,3 +1,4 @@
+import { experienceEnquiryUrl } from "../../../lib/whatsapp";
 import type { CSSProperties } from "react";
 import Image from "next/image";
 import { notFound, redirect } from "next/navigation";
@@ -29,7 +30,7 @@ export default async function ClassDetail({ params }: { params: Promise<{ slug: 
       <div className="cinematic-meta"><span><small>Duration</small>{item.duration}</span><span><small>Experience</small>{item.level}</span></div>
     </section>
 
-    <section className="class-declaration"><p className="eyebrow">The experience</p><h2>{item.intro}</h2><div><p>{item.forYou}</p><Link href={`/visit?interest=${item.slug}`}>Ask about {item.name} <span>↗</span></Link></div></section>
+    <section className="class-declaration"><p className="eyebrow">The experience</p><h2>{item.intro}</h2><div><p>{item.forYou}</p><Link href={experienceEnquiryUrl(item.slug)} target="_blank" rel="noopener noreferrer">Ask about {item.name} <span>↗</span></Link></div></section>
 
     <section className="session-arc">
       <div className="session-arc-heading"><p className="eyebrow light-text">{item.slug === "do-complete" ? "Your weekly rhythm" : "Inside the experience"}</p><h2>{item.slug === "do-complete" ? <>Your whole week,<br/>built around<br/>feeling well.</> : <>A practice<br/>with room to<br/>make it yours.</>}</h2><p className="dw-session-note">A glimpse of the experience. The studio team can confirm the current session format.</p></div>
@@ -41,7 +42,7 @@ export default async function ClassDetail({ params }: { params: Promise<{ slug: 
       <div><p className="eyebrow">The focus</p><h2>What this Do<br/>makes room for.</h2><div className="focus-chips">{item.focus.map((focus,i)=><span key={focus}><small>0{i+1}</small>{focus}</span>)}</div><p>{item.forYou}</p></div>
     </section>
 
-    <section className="first-session"><p className="eyebrow">Your first time</p><div><h2>Come as you are.</h2><p>{item.firstVisit}</p></div><Link className="button" href={`/visit?interest=${item.slug}`}>Plan your visit <b>↗</b></Link></section>
+    <section className="first-session"><p className="eyebrow">Your first time</p><div><h2>Come as you are.</h2><p>{item.firstVisit}</p></div><Link className="button" href={experienceEnquiryUrl(item.slug)} target="_blank" rel="noopener noreferrer">Plan your visit <b>↗</b></Link></section>
 
     <Link className="next-class-cinematic" href={experienceHref(next.slug)}><Image src={next.image} alt="" fill sizes="100vw"/><div/><small>{item.slug === "do-grow" ? "Continue exploring" : "Pair your practice with"}</small><strong>{next.name}</strong><span>Explore ↗</span></Link>
   </main></SubpageShell>;

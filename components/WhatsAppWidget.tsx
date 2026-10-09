@@ -1,6 +1,8 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { usePathname } from "next/navigation";
+import { enquiryUrl, pageEnquiryContext } from "../lib/whatsapp";
 
 const intents = [
   ["Book a visit", "I'd like to book a visit and learn more about the studio."],
@@ -11,6 +13,8 @@ const intents = [
 ] as const;
 
 export default function WhatsAppWidget() {
+  const pathname = usePathname();
+  const regarding = pageEnquiryContext(pathname);
   const [open, setOpen] = useState(false);
   const buttonRef = useRef<HTMLButtonElement>(null);
   const panelRef = useRef<HTMLDivElement>(null);
@@ -34,7 +38,7 @@ export default function WhatsAppWidget() {
   return <>
     {open && <div className="whatsapp-panel" id="whatsapp-panel" ref={panelRef} aria-label="Contact Do Well on WhatsApp">
       <p className="eyebrow">A note to the studio</p><h2>Welcome to Do Well.</h2><p>How can we help?</p>
-      <div>{intents.map(([label,message])=><a key={label} href={`https://wa.me/918688217765?text=${encodeURIComponent(`Hi Do Well Studio,\n\n${message}`)}`} target="_blank" rel="noopener noreferrer" onClick={()=>setOpen(false)}>{label}<span aria-hidden="true">↗</span></a>)}</div>
+      <div>{regarding && <a href={enquiryUrl("Question about this experience", "I would like to enquire about this. Please share the current details and availability.", regarding)} target="_blank" rel="noopener noreferrer" onClick={()=>setOpen(false)}>Ask about {regarding}<span aria-hidden="true">↗</span></a>}{intents.map(([label,message])=><a key={label} href={enquiryUrl(label, message, regarding)} target="_blank" rel="noopener noreferrer" onClick={()=>setOpen(false)}>{label}<span aria-hidden="true">↗</span></a>)}</div>
     </div>}
     <button ref={buttonRef} className="studio-whatsapp" type="button" aria-expanded={open} aria-controls="whatsapp-panel" onClick={()=>setOpen(value=>!value)}>
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 11.6a8 8 0 0 1-11.9 7L4 20l1.4-4A8 8 0 1 1 20 11.6Z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round"/><path d="m8.5 7.5 1.2 2-1 1.1c.8 1.7 1.7 2.6 3.4 3.4l1.1-1 2 1.2c.1 1.4-.8 2.1-2 1.8-3.4-.7-6.1-3.4-6.8-6.8-.3-1.2.7-2.2 2.1-1.7Z" fill="currentColor"/></svg>

@@ -1,3 +1,4 @@
+import { experienceEnquiryUrl } from "./whatsapp";
 export const journalEntries = [
   {
     slug: "strength-and-mobility",
@@ -36,7 +37,7 @@ export const journalEntries = [
       { title: "Preparation is personal", body: "Ask the team about session duration, what to bring and how to prepare before booking. If you have a health condition or a concern about heat, cold or light exposure, speak with a qualified health professional first." },
       { title: "Find your own rhythm", body: "A visit might begin with one recovery experience, or a conversation about how to include recovery in a wider routine. The goal is to choose deliberately, with the information you need." },
     ],
-    related: [ { label: "Explore Do Reset", href: "/recovery" }, { label: "Ask about recovery", href: "/visit?interest=do-reset" } ],
+    related: [ { label: "Explore Do Reset", href: "/recovery" }, { label: "Ask about recovery", href: experienceEnquiryUrl("do-reset", "Recovery enquiry") } ],
   },
   {
     slug: "a-do-well-rhythm",
@@ -49,6 +50,6 @@ export const journalEntries = [
       { title: "Let it evolve", body: "Your interests may change as you get to know the studio. Yoga can sit beside strength; recovery can have its own place. Do Complete is the studio's idea of a more connected practice, with current membership details confirmed by the team." },
       { title: "Begin in person", body: "A studio visit lets you see the space and speak to the team about what you are looking for. You can ask about classes, current times, recovery and membership before making a decision." },
     ],
-    related: [ { label: "Find your practice", href: "/classes" }, { label: "Plan a studio visit", href: "/visit" } ],
+    related: [ { label: "Find your practice", href: "/classes" }, { label: "Plan a studio visit", href: experienceEnquiryUrl("help-choosing", "Studio visit") } ],
   },
 ] as const;

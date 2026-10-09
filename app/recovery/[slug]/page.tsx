@@ -1,3 +1,4 @@
+import { enquiryUrl } from "../../../lib/whatsapp";
 import { notFound } from "next/navigation";
 import InfoPage from "../../../components/InfoPage";
 
@@ -41,5 +42,5 @@ export default async function RecoveryServicePage({ params }: { params: Promise<
   const { slug } = await params;
   const service = services[slug as keyof typeof services];
   if (!service) notFound();
-  return <InfoPage eyebrow={`Do Reset / ${service.title}`} title="Make space to" accent="reset." intro={service.description} sections={[...service.sections, { title: "Ask the studio", body: "For current availability, session details and safety information, contact the Do Well team before planning your visit." }]} cta={`Enquire about ${service.title}`} href={`https://wa.me/918688217765?text=${encodeURIComponent(`Hi Do Well Studio, I'm interested in the ${service.title} recovery experience.`)}`} />;
+  return <InfoPage eyebrow={`Do Reset / ${service.title}`} title="Make space to" accent="reset." intro={service.description} sections={[...service.sections, { title: "Ask the studio", body: "For current availability, session details and safety information, contact the Do Well team before planning your visit." }]} cta={`Enquire about ${service.title}`} href={enquiryUrl("Recovery enquiry", "Please share session details, preparation and availability.", service.title)} />;
 }

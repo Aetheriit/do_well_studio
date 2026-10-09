@@ -1,3 +1,5 @@
+import { experienceEnquiryUrl } from "../../lib/whatsapp";
+import { enquiryUrl } from "../../lib/whatsapp";
 import Image from "next/image";
 import Link from "next/link";
 import SubpageShell from "../../components/SubpageShell";
@@ -16,7 +18,7 @@ const pathways = [
 export default function MembershipPage() {
   return <SubpageShell><main className="sub-main dw-membership">
     <section className="dw-membership-hero">
-      <div className="dw-membership-title"><p className="eyebrow light-text">Do Complete / Membership</p><h1>More than<br/>one way to<br/><em>feel well.</em></h1><p>A connected practice through movement, mindfulness and recovery. Find the parts that fit your life and let them grow together.</p><Link href="/visit?interest=membership">Explore membership <b aria-hidden="true">↗</b></Link></div>
+      <div className="dw-membership-title"><p className="eyebrow light-text">Do Complete / Membership</p><h1>More than<br/>one way to<br/><em>feel well.</em></h1><p>A connected practice through movement, mindfulness and recovery. Find the parts that fit your life and let them grow together.</p><Link href={experienceEnquiryUrl("membership", "Membership enquiry")} target="_blank" rel="noopener noreferrer">Explore membership <b aria-hidden="true">↗</b></Link></div>
       <div className="dw-membership-photo"><Image src="/story-interior-editorial.webp" alt="Illustrative calm studio interior with natural materials" fill priority sizes="(max-width: 900px) 100vw, 55vw"/><span>THE WAY TO LIVE WELL</span></div>
     </section>
 
@@ -24,6 +26,6 @@ export default function MembershipPage() {
       <div className="dw-membership-steps">{pathways.map(item => <Link href={item.href} key={item.name}><span>{item.number} / DO WELL</span><strong>{item.name}</strong><p>{item.detail}</p><b aria-hidden="true">↗</b></Link>)}</div>
     </section>
 
-    <section className="dw-membership-details"><div><span>THE DETAILS / CURRENT OPTIONS</span><h2>Let&apos;s make it<br/>personal.</h2></div><div><p>Membership access, class and recovery inclusions, prices and trial options are confirmed directly by the studio. Tell us what you would like from a membership and we will help you explore what is available now.</p><Link href="/visit?interest=membership">Request a membership conversation <b aria-hidden="true">↗</b></Link><a href="https://wa.me/918688217765?text=Hi%20Do%20Well%20Studio%2C%20I%20would%20like%20to%20learn%20about%20current%20Do%20Complete%20membership%20options." target="_blank" rel="noopener noreferrer">Ask the front desk on WhatsApp <b aria-hidden="true">↗</b></a></div></section>
+    <section className="dw-membership-details"><div><span>THE DETAILS / CURRENT OPTIONS</span><h2>Let&apos;s make it<br/>personal.</h2></div><div><p>Membership access, class and recovery inclusions, prices and trial options are confirmed directly by the studio. Tell us what you would like from a membership and we will help you explore what is available now.</p><Link href={experienceEnquiryUrl("membership", "Membership enquiry")} target="_blank" rel="noopener noreferrer">Request a membership conversation <b aria-hidden="true">↗</b></Link><a href={enquiryUrl("Membership enquiry", "I would like to learn about current Do Complete membership options.")} target="_blank" rel="noopener noreferrer">Ask the front desk on WhatsApp <b aria-hidden="true">↗</b></a></div></section>
   </main></SubpageShell>;
 }

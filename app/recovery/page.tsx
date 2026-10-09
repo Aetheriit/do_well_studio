@@ -1,3 +1,5 @@
+import { experienceEnquiryUrl } from "../../lib/whatsapp";
+import { enquiryUrl } from "../../lib/whatsapp";
 import Image from "next/image";
 import Link from "next/link";
 import SubpageShell from "../../components/SubpageShell";
@@ -31,9 +33,9 @@ export default function RecoveryPage() {
 
     <section className="reset-sequence">
       <div className="sequence-wheel" aria-hidden="true"><span>HEAT</span><span>COLD</span><span>LIGHT</span><i/></div>
-      <div data-reveal><p className="eyebrow light-text">The complete reset</p><h2>One intention.<br/>Different ways<br/>to pause.</h2><p>Speak with the team about the current recovery options, their sequence and the preparation that is right for you.</p><Link className="button button-light" href="/visit?interest=do-reset">Ask about Do Reset <b>↗</b></Link></div>
+      <div data-reveal><p className="eyebrow light-text">The complete reset</p><h2>One intention.<br/>Different ways<br/>to pause.</h2><p>Speak with the team about the current recovery options, their sequence and the preparation that is right for you.</p><Link className="button button-light" href={experienceEnquiryUrl("do-reset", "Recovery enquiry")} target="_blank" rel="noopener noreferrer">Ask about Do Reset <b>↗</b></Link></div>
     </section>
 
-    <section className="recovery-care"><p className="eyebrow">Before you arrive</p><h2>Recovery is personal.</h2><div><p>Ask the studio for the latest session duration, what to bring and how to prepare. Details differ across the heat, cold and light experiences.</p><p>If you have a health condition, are pregnant or have concerns about heat, cold or light exposure, speak with a qualified health professional before booking.</p></div><a href="https://wa.me/918688217765?text=Hi%20Do%20Well%20Studio%2C%20I%20have%20a%20question%20about%20Do%20Reset." target="_blank" rel="noreferrer">Ask the recovery team <span>↗</span></a></section>
+    <section className="recovery-care"><p className="eyebrow">Before you arrive</p><h2>Recovery is personal.</h2><div><p>Ask the studio for the latest session duration, what to bring and how to prepare. Details differ across the heat, cold and light experiences.</p><p>If you have a health condition, are pregnant or have concerns about heat, cold or light exposure, speak with a qualified health professional before booking.</p></div><a href={enquiryUrl("Recovery enquiry", "I have a question about Do Reset.")} target="_blank" rel="noreferrer">Ask the recovery team <span>↗</span></a></section>
   </main></SubpageShell>;
 }
