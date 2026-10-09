@@ -9,7 +9,7 @@
   background:
     radial-gradient(circle at 50% 43%, rgba(114, 125, 113, .62), transparent 47%),
     #263d36;
-  animation: logo-intro-leave 460ms ease-in 1.65s forwards;
+  animation: logo-intro-leave 460ms ease-in 2.15s forwards;
 }
 
 .logo-intro__aura {
@@ -73,13 +73,51 @@
   pointer-events: none;
 }
 
-.logo-intro__glass img {
+.logo-intro__mark {
   position: relative;
   z-index: 1;
   width: 91%;
   height: auto;
+  overflow: visible;
   mix-blend-mode: multiply;
-  filter: drop-shadow(0 3px 5px rgba(76, 45, 31, .1));
+}
+
+.logo-intro__figure {
+  transform-box: view-box;
+  animation-duration: 1.65s;
+  animation-delay: 180ms;
+  animation-timing-function: cubic-bezier(.45, 0, .2, 1);
+  animation-fill-mode: both;
+}
+
+.logo-intro__figure--head {
+  transform-origin: 390px 178px;
+  animation-name: logo-figure-head;
+}
+
+.logo-intro__figure--arm-left {
+  transform-origin: 382px 205px;
+  animation-name: logo-figure-arm-left;
+}
+
+.logo-intro__figure--arm-raised {
+  transform-origin: 450px 169px;
+  animation-name: logo-figure-arm-raised;
+}
+
+.logo-intro__figure--body {
+  transform-origin: 419px 234px;
+  animation-name: logo-figure-body;
+}
+
+.logo-intro__figure--leg-long {
+  transform-origin: 378px 261px;
+  animation-name: logo-figure-leg-long;
+}
+
+.logo-intro__figure--leg-short {
+  transform-origin: 426px 274px;
+  animation-name: logo-figure-leg-short;
 }
 
 .logo-intro__caption {
@@ -155,6 +193,49 @@
   to { opacity: 0; visibility: hidden; pointer-events: none; }
 }
 
+/* One stretch and step, then return to the exact original logo pose. */
+@keyframes logo-figure-head {
+  0%, 100% { transform: translateY(0) rotate(0); }
+  28% { transform: translateY(9px) rotate(-9deg); }
+  58% { transform: translateY(-10px) rotate(7deg); }
+  80% { transform: translateY(2px) rotate(-2deg); }
+}
+
+@keyframes logo-figure-arm-left {
+  0%, 100% { transform: rotate(0); }
+  28% { transform: translateY(5px) rotate(-24deg); }
+  58% { transform: translateY(-5px) rotate(20deg); }
+  80% { transform: rotate(-5deg); }
+}
+
+@keyframes logo-figure-arm-raised {
+  0%, 100% { transform: rotate(0); }
+  28% { transform: translateY(5px) rotate(22deg); }
+  58% { transform: translateY(-6px) rotate(-17deg); }
+  80% { transform: rotate(5deg); }
+}
+
+@keyframes logo-figure-body {
+  0%, 100% { transform: translateY(0) rotate(0); }
+  28% { transform: translateY(7px) rotate(-8deg); }
+  58% { transform: translateY(-7px) rotate(5deg); }
+  80% { transform: translateY(2px) rotate(-2deg); }
+}
+
+@keyframes logo-figure-leg-long {
+  0%, 100% { transform: rotate(0); }
+  28% { transform: rotate(-13deg); }
+  58% { transform: rotate(14deg); }
+  80% { transform: rotate(-3deg); }
+}
+
+@keyframes logo-figure-leg-short {
+  0%, 100% { transform: rotate(0); }
+  28% { transform: translateY(6px) rotate(26deg); }
+  58% { transform: translateY(-4px) rotate(-24deg); }
+  80% { transform: rotate(6deg); }
+}
+
 @keyframes logo-light-cross {
   to { transform: rotate(18deg) translateX(950%); }
 }
@@ -180,6 +261,9 @@
 
 @media (prefers-reduced-motion: reduce) {
   .logo-intro { display: none; }
+  .logo-intro,
+  .logo-intro *,
+  .logo-intro *::before { animation: none; }
   .logo.glass-logo,
   .logo.glass-logo::before { animation: none; transition: none; }
   .logo.glass-logo:hover,
