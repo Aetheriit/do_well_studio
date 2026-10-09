@@ -1,13 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { preload } from "react-dom";
 import AnimatedLogoMark from "./AnimatedLogoMark";
 
 export default function LogoIntro() {
   const [visible, setVisible] = useState(true);
-  preload("/do-well-logo.png", { as: "image" });
-
   useEffect(() => {
     // CSS also dismisses the intro without JavaScript. This covers hydration
     // arriving after animationend or a browser cancelling the animation.
