@@ -1,8 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Isolate both modes so dev servers and Windows file scanners cannot lock
-  // the production build output while it is being generated (or vice versa).
-  distDir: process.env.NODE_ENV === "production" ? ".next-production" : ".next-dev",
+  // Keep dev output separate while using the standard directory for production
+  // builds so Vercel can locate the generated manifests and assets.
+  distDir: process.env.NODE_ENV === "production" ? ".next" : ".next-dev",
   images: {
     remotePatterns: [
       { protocol: "https", hostname: "images.unsplash.com" },
