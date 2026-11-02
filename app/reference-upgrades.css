@@ -140,7 +140,7 @@
   margin-top: clamp(42px, 5vw, 68px);
   overflow: hidden;
   isolation: isolate;
-  border-radius: 170px 170px 12px 12px;
+  border-radius: 16px;
   color: var(--ivory);
   background: #35463d;
 }
@@ -348,7 +348,7 @@
 
   .home-experience-preview {
     min-height: clamp(390px, 110vw, 520px);
-    border-radius: 150px 150px 12px 12px;
+    border-radius: 16px;
   }
 
   .class-explorer .experience-list {

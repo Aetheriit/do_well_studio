@@ -37,3 +37,9 @@
 .dw-guide-image--portrait{min-height:clamp(450px,42vw,600px)}
 .dw-guide-image--portrait img{object-position:center 10%}
 @media(max-width:600px){.dw-guide-image--portrait{min-height:clamp(380px,105vw,460px)}}
+
+/* Shared soft rectangular frames for studio photography. */
+:is(.home-experience-preview, .atlas-photo, .experience-preview, .journey-image, .chapter-photo, .focus-photo, .ritual-photo, .story-visual, .story-window-photo, .origin-collage figure, .visit-opener-photo, .dw-guide-image, .dw-membership-photo, .dw-coaches-image, .pillar-grid article) {
+  border-radius: 16px;
+  overflow: hidden;
+}
